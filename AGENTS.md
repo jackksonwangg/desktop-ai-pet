@@ -111,6 +111,48 @@ CVMOps 中台 Agent（Galaxy MCP / 云霄 / 企微，绝密，不可见）
 ```
 **Codex 现在不需要实现这个功能的 UI**，但如果要设计 popup/桌宠的"快捷按钮"区域，请把这个可能性纳入布局设计（留一个可扩展的按钮列表位置），具体接入等 CodeBuddy 通知。
 
+### 2.5 （预留，暂不实现）MCP 工具代理接口
+
+> **为什么插件不能直接调 MCP？**
+> MCP 协议需要持久连接（stdio/HTTP long-poll），而 Chrome 插件的 Service Worker 有生命周期限制（浏览器随时挂起），不适合做 MCP Client。
+> 所以 MCP 调用全部由 `server/` 代理——插件只发普通 HTTP 请求。
+
+**规划接口**（CodeBuddy 未来实现，Codex 前端只需预留 UI 位置）：
+
+#### `POST /api/mcp/call` — 代理调用 MCP 工具
+
+请求：
+```json
+{
+  "tool": "工具名（如 query_galaxy、check_reservation）",
+  "params": { "gid": "xxx", "date": "2026-07-13" }
+}
+```
+响应（SSE 流式，格式同 2.1）：
+```json
+{"status":"thinking"}
+{"phase":"tool_calling","tool":"query_galaxy"}
+{"content":"查询结果文本..."}
+{"done":true}
+```
+
+#### `GET /api/mcp/tools` — 列出当前可用的 MCP 工具
+
+响应：
+```json
+{
+  "tools": [
+    { "name": "query_galaxy", "description": "查询 Galaxy MCP 数据", "category": "data" },
+    { "name": "check_reservation", "description": "检查预扣状态", "category": "reservation" }
+  ]
+}
+```
+
+**Codex 前端需要做的事**：
+- 在 popup 设置页或桌宠快捷按钮区域，**预留一个"工具列表"的 UI 位置**（可折叠/可扩展的按钮组）
+- 不需要现在实现具体工具的 UI，等 CodeBuddy 通知哪些工具可用后再接入
+- `/api/mcp/call` 的 SSE 格式和 `/api/chat/stream` 完全一致，前端解析逻辑可以复用
+
 ---
 
 ## 3. 安全红线（违反任何一条都必须重做）
@@ -155,8 +197,10 @@ Codex 和 CodeBuddy 是两个独立运行的 Agent 会话，**不会实时看到
 
 - Manifest V3 骨架已搭好，`content/pet.js` 用占位 SVG 猫咪，4 态动画已实现
 - `background.js` 已实现完整 SSE 消费逻辑，指向 `http://localhost:8900`（本地 mock/DeepSeek 后端，非最终 CVM Agent 后端）
-- `server/server.py` 目前直连 DeepSeek 做闲聊 demo，**其中硬编码了一个 API Key，这是历史遗留问题，CodeBuddy 会在合并前清理，Codex 不需要处理这个文件**
+- `server/server.py` 硬编码 API Key **已修复**（改为纯环境变量读取，未配置时自动降级 Mock 模式）
+- Agent-to-agent 闭环已验证通过：Codex 在 `codex/frontend-work` 分支做了联动测试，CodeBuddy 审查并合并到 `main`
 - 尚未接入真实 CVM Agent；`context.pageUrl` 等字段是为将来扩展预留的，目前后端不会用到
+- MCP 工具代理接口已规划（2.5 节），`server/` 未来会加 `mcp_proxy.py` 适配层，插件只需预留 UI 位置
 
 ---
 

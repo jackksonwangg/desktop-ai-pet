@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "AI Pet Assistant",
+  "version": "0.1.0",
+  "description": "AI 桌宠助手 — 在所有网页上陪伴你的 AI 聊天伙伴",
+  "permissions": ["activeTab", "storage", "scripting"],
+  "host_permissions": ["http://localhost:8900/"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/pet.js", "content/chat-panel.js"],
+      "css": ["content/pet.css", "content/chat-panel.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*.svg"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

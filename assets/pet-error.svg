@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <!-- 猫咪身体 - 缩小一点表示沮丧 -->
+  <ellipse cx="60" cy="80" rx="32" ry="26" fill="#FFB347" stroke="#E8941A" stroke-width="2"/>
+  <!-- 头 - 低垂 -->
+  <circle cx="60" cy="50" r="26" fill="#FFB347" stroke="#E8941A" stroke-width="2"/>
+  <!-- 左耳 - 耷拉 -->
+  <polygon points="40,30 28,18 52,26" fill="#FFB347" stroke="#E8941A" stroke-width="2"/>
+  <polygon points="42,28 34,20 50,26" fill="#FFD4A0"/>
+  <!-- 右耳 - 耷拉 -->
+  <polygon points="80,30 92,18 68,26" fill="#FFB347" stroke="#E8941A" stroke-width="2"/>
+  <polygon points="78,28 86,20 70,26" fill="#FFD4A0"/>
+  <!-- 眼睛 - X_X -->
+  <line x1="42" y1="46" x2="52" y2="54" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="52" y1="46" x2="42" y2="54" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="68" y1="46" x2="78" y2="54" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="78" y1="46" x2="68" y2="54" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- 鼻子 -->
+  <ellipse cx="60" cy="56" rx="3" ry="2.5" fill="#E8941A"/>
+  <!-- 嘴 - 波浪形沮丧 -->
+  <path d="M52,62 Q56,59 60,62 Q64,65 68,62" fill="none" stroke="#E8941A" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- 汗滴 -->
+  <path d="M88,30 Q90,25 92,30 Q90,34 88,30" fill="#87CEEB" opacity="0.7"/>
+  <!-- 尾巴 - 低垂 -->
+  <path d="M90,85 Q100,95 95,108" fill="none" stroke="#FFB347" stroke-width="6" stroke-linecap="round"/>
+  <path d="M90,85 Q100,95 95,108" fill="none" stroke="#E8941A" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+  <!-- 脚 -->
+  <ellipse cx="42" cy="104" rx="10" ry="6" fill="#FFB347" stroke="#E8941A" stroke-width="1.5"/>
+  <ellipse cx="78" cy="104" rx="10" ry="6" fill="#FFB347" stroke="#E8941A" stroke-width="1.5"/>
+</svg>

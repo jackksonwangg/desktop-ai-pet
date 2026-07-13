@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>AI Pet Test</title>
+<style>
+  body { font-family: system-ui; padding: 40px; background: #f5f5f5; }
+  h1 { color: #333; }
+  .info { background: #fff; padding: 20px; border-radius: 8px; margin: 20px 0; box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+  .step { margin: 8px 0; padding-left: 16px; border-left: 3px solid #4CAF50; }
+  .warn { border-color: #FF9800; }
+  code { background: #eee; padding: 2px 6px; border-radius: 3px; font-size: 13px;}
+</style>
+</head>
+<body>
+<h1>🐱 AI Pet 扩展测试页</h1>
+
+<div class="info">
+  <h3>检查清单：</h3>
+  <div class="step">1. 打开 DevTools Console（F12），应该看到 <code>[AI-Pet] pet.js 开始执行</code></div>
+  <div class="step">2. 右下角应该出现一只小猫咪 🐱</div>
+  <div class="step">3. 点击猫咪 → 弹出聊天面板</div>
+  <div class="step">4. 输入消息 → 发送 → 观察流式回复</div>
+  <div class="step warn">⚠ 如果看不到猫咪：确认扩展已加载，且刷新此页面</div>
+</div>
+
+<div class="info">
+  <h3>Debug Info:</h3>
+  <p>当前 URL: <code id="url"></code></p>
+  <p>扩展 ID: <span id="ext-id">检测中...</span></p>
+  <p>Server 状态: <span id="server-status">检测中...</span></p>
+</div>
+
+<script>
+  document.getElementById('url').textContent = location.href;
+
+  // 检测扩展是否加载
+  if (chrome && chrome.runtime) {
+    // 尝试获取扩展信息
+    document.getElementById('ext-id').textContent = 'Chrome Extension API 可用';
+  } else {
+    document.getElementById('ext-id').textContent = '❌ 非扩展环境';
+  }
+
+  // 检测后端 server
+  fetch('http://localhost:8900/api/health')
+    .then(r => r.json())
+    .then(d => {
+      document.getElementById('server-status').innerHTML =
+        '✅ 运行中 (' + d.mode + ' / ' + d.model + ')';
+    })
+    .catch(e => {
+      document.getElementById('server-status').innerHTML =
+        '❌ 未连接 (<code>cd server && python3 server.py</code>)';
+    });
+
+  console.log('[Test Page] 测试页面已加载');
+</script>
+</body>
+</html>

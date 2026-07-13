@@ -1,0 +1,243 @@
+/* ===== AI Pet Chat Panel ===== */
+#ai-pet-chat-panel {
+  position: fixed;
+  bottom: 120px;
+  right: 30px;
+  width: 380px;
+  max-height: 520px;
+  z-index: 2147483641;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.25s ease;
+  transform-origin: bottom right;
+}
+
+#ai-pet-chat-panel.hidden {
+  transform: scale(0.8);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 头部 */
+#ai-pet-chat-panel .chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #FFB347, #FF8C00);
+  color: #fff;
+  flex-shrink: 0;
+}
+
+#ai-pet-chat-panel .chat-header h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+#ai-pet-chat-panel .chat-header .header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+#ai-pet-chat-panel .chat-header button {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: #fff;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+#ai-pet-chat-panel .chat-header button:hover {
+  background: rgba(255,255,255,0.35);
+}
+
+/* 消息区 */
+#ai-pet-chat-panel .chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 16px;
+  min-height: 200px;
+  max-height: 360px;
+  scroll-behavior: smooth;
+}
+
+#ai-pet-chat-panel .chat-messages::-webkit-scrollbar {
+  width: 4px;
+}
+
+#ai-pet-chat-panel .chat-messages::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 2px;
+}
+
+/* 消息气泡 */
+#ai-pet-chat-panel .msg {
+  margin-bottom: 10px;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+#ai-pet-chat-panel .msg.user {
+  flex-direction: row-reverse;
+}
+
+#ai-pet-chat-panel .msg .avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+#ai-pet-chat-panel .msg.assistant .avatar {
+  background: #FFF3E0;
+}
+
+#ai-pet-chat-panel .msg.user .avatar {
+  background: #E3F2FD;
+}
+
+#ai-pet-chat-panel .msg .bubble {
+  max-width: 260px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+#ai-pet-chat-panel .msg.assistant .bubble {
+  background: #F5F5F5;
+  border-bottom-left-radius: 4px;
+}
+
+#ai-pet-chat-panel .msg.user .bubble {
+  background: #FFB347;
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+
+/* 打字指示器 */
+#ai-pet-chat-panel .typing-indicator {
+  display: flex;
+  gap: 4px;
+  padding: 4px 0;
+}
+
+#ai-pet-chat-panel .typing-indicator span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #999;
+  animation: typing-bounce 1.2s infinite;
+}
+
+#ai-pet-chat-panel .typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+#ai-pet-chat-panel .typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing-bounce {
+  0%, 60%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-6px); }
+}
+
+/* 输入区 */
+#ai-pet-chat-panel .chat-input-area {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  border-top: 1px solid #eee;
+  gap: 8px;
+  flex-shrink: 0;
+  background: #fafafa;
+}
+
+#ai-pet-chat-panel .chat-input-area input {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 8px 14px;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s;
+  background: #fff;
+}
+
+#ai-pet-chat-panel .chat-input-area input:focus {
+  border-color: #FFB347;
+}
+
+#ai-pet-chat-panel .chat-input-area button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, #FFB347, #FF8C00);
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s, box-shadow 0.15s;
+  flex-shrink: 0;
+}
+
+#ai-pet-chat-panel .chat-input-area button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 2px 8px rgba(255,140,0,0.3);
+}
+
+#ai-pet-chat-panel .chat-input-area button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* 代码块样式 */
+#ai-pet-chat-panel .msg .bubble pre {
+  background: #1e1e1e;
+  color: #d4d4d4;
+  padding: 8px 10px;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 12px;
+  margin: 6px 0;
+}
+
+#ai-pet-chat-panel .msg .bubble code {
+  background: rgba(0,0,0,0.06);
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+#ai-pet-chat-panel .msg .bubble pre code {
+  background: none;
+  padding: 0;
+}

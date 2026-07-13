@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <!-- 猫咪身体 -->
+  <ellipse cx="60" cy="75" rx="35" ry="30" fill="#FFB347" stroke="#E8941A" stroke-width="2"/>
+  <!-- 头 -->
+  <circle cx="60" cy="45" r="28" fill="#FFB347" stroke="#E8941A" stroke-width="2"/>
+  <!-- 左耳 -->
+  <polygon points="38,25 32,5 50,20" fill="#FFB347" stroke="#E8941A" stroke-width="2"/>
+  <polygon points="40,22 36,10 48,20" fill="#FFD4A0"/>
+  <!-- 右耳 -->
+  <polygon points="82,25 88,5 70,20" fill="#FFB347" stroke="#E8941A" stroke-width="2"/>
+  <polygon points="80,22 84,10 72,20" fill="#FFD4A0"/>
+  <!-- 眼睛 - 微笑 -->
+  <path d="M45,42 Q50,38 55,42" fill="none" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M65,42 Q70,38 75,42" fill="none" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- 鼻子 -->
+  <ellipse cx="60" cy="50" rx="3" ry="2.5" fill="#E8941A"/>
+  <!-- 嘴 -->
+  <path d="M55,54 Q60,58 65,54" fill="none" stroke="#E8941A" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- 胡须 -->
+  <line x1="30" y1="48" x2="48" y2="50" stroke="#E8941A" stroke-width="1" opacity="0.6"/>
+  <line x1="30" y1="53" x2="48" y2="53" stroke="#E8941A" stroke-width="1" opacity="0.6"/>
+  <line x1="72" y1="50" x2="90" y2="48" stroke="#E8941A" stroke-width="1" opacity="0.6"/>
+  <line x1="72" y1="53" x2="90" y2="53" stroke="#E8941A" stroke-width="1" opacity="0.6"/>
+  <!-- 尾巴 -->
+  <path d="M92,80 Q105,65 98,50" fill="none" stroke="#FFB347" stroke-width="6" stroke-linecap="round"/>
+  <path d="M92,80 Q105,65 98,50" fill="none" stroke="#E8941A" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
+  <!-- 脚 -->
+  <ellipse cx="42" cy="102" rx="10" ry="6" fill="#FFB347" stroke="#E8941A" stroke-width="1.5"/>
+  <ellipse cx="78" cy="102" rx="10" ry="6" fill="#FFB347" stroke="#E8941A" stroke-width="1.5"/>
+</svg>

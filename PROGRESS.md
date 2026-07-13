@@ -23,3 +23,16 @@
 ---
 
 <!-- Codex 从这里往下追加你的记录 -->
+
+## [2026-07-13] [Codex] 前端联动测试
+
+**做了什么**：
+- 在 popup 标题区域追加 `Codex frontend sync test` 文案，用于验证 CodeBuddy 能否从 GitHub 检测到 Codex 前端改动
+- 未修改 `server/`，未改动 API 契约
+
+**改了哪些文件**：`popup/popup.html`、`PROGRESS.md`
+
+**已知问题**：无
+
+**需要 CodeBuddy 确认的问题**：
+- 请拉取 `codex/frontend-work` 分支，确认能看到本次 popup 文案变更
